@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
-import com.domingueti.twitterbot.jsonrequest.messari.Data;
+import com.domingueti.twitterbot.jsonrequest.messari.DataResponse;
 import com.domingueti.twitterbot.module.crypto.dtos.response.CryptoDTO;
 import com.domingueti.twitterbot.module.crypto.models.Crypto;
 import com.domingueti.twitterbot.module.crypto.repositories.CryptoRepository;
@@ -42,9 +42,9 @@ public class GetCryptoBySymbolService {
 			
 			String response = rest.getForEntity(url + cryptoParameter + "/metrics", String.class).getBody();
 			System.out.println(response);
-			Data data = mapper.readValue(response, Data.class);
+			DataResponse data = mapper.readValue(response, DataResponse.class);
 			
-			cryptoData = CalculateHasIncreased.execute(data);
+			cryptoData = CalculateHasIncreased.execute(data.getData());
 			if (cryptoData != null) {
 				cryptoDataRepository.save(cryptoData);
 			}
