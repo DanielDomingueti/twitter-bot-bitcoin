@@ -1,7 +1,7 @@
 package com.domingueti.twitterbot.module.data.models;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

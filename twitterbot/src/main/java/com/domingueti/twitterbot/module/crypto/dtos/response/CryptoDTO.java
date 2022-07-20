@@ -2,6 +2,7 @@ package com.domingueti.twitterbot.module.crypto.dtos.response;
 
 import java.io.Serializable;
 
+import com.domingueti.twitterbot.jsonrequest.messari.Data;
 import com.domingueti.twitterbot.module.crypto.models.Crypto;
 
 import lombok.AllArgsConstructor;
@@ -33,5 +34,9 @@ public class CryptoDTO implements Serializable {
 		priceUsd = model.getCryptoData().getPriceUsd();
 		hasIncreased = model.getCryptoData().getHasIncreased();
 		changeValue = model.getCryptoData().getChangePercentage();
+	}
+	
+	public CryptoDTO(Data data) {
+		
 	}
 }
