@@ -20,7 +20,7 @@ public class CryptoDTO implements Serializable {
 	
 	private @Getter @Setter String symbol;
 	
-	private @Getter @Setter String priceUsd;
+	private @Getter @Setter Double priceUsd;
 	
 	private @Getter @Setter Boolean hasIncreased;
 	
@@ -32,6 +32,6 @@ public class CryptoDTO implements Serializable {
 		symbol = model.getCryptoData().getSymbol();
 		priceUsd = model.getCryptoData().getPriceUsd();
 		hasIncreased = model.getCryptoData().getHasIncreased();
-		changeValue = model.getCryptoData().getChangeValue();
+		changeValue = model.getCryptoData().getChangePercentage();
 	}
 }
