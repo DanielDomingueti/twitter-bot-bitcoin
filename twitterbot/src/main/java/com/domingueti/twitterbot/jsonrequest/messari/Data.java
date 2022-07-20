@@ -24,7 +24,5 @@ public class Data implements Serializable {
 	private String name;
 	private String symbol;
 	private MarketData market_data;
-	//ignore roi_data for instance
-	private RoiData roi_data;
 	
 }
