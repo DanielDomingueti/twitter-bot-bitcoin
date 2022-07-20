@@ -16,7 +16,6 @@ import lombok.ToString;
 @Setter
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Data implements Serializable {
 	private static final long serialVersionUID = 1L;
 
