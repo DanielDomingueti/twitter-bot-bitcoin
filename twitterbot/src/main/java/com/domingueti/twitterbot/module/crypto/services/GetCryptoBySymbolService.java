@@ -1,17 +1,18 @@
 package com.domingueti.twitterbot.module.crypto.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
-import com.domingueti.twitterbot.jsonrequest.messari.DataResponse;
+import com.domingueti.twitterbot.components.messari.DataResponse;
+import com.domingueti.twitterbot.components.utils.CalculateHasIncreased;
 import com.domingueti.twitterbot.module.crypto.dtos.response.CryptoDTO;
 import com.domingueti.twitterbot.module.crypto.models.Crypto;
 import com.domingueti.twitterbot.module.crypto.repositories.CryptoRepository;
 import com.domingueti.twitterbot.module.data.models.CryptoData;
 import com.domingueti.twitterbot.module.data.repositories.CryptoDataRepository;
-import com.domingueti.twitterbot.utils.statics.CalculateHasIncreased;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -24,7 +25,8 @@ public class GetCryptoBySymbolService {
 	@Autowired
 	private ObjectMapper mapper;
 	
-	private String url = "https://data.messari.io/api/v1/assets/";
+	@Value("${messariUrl}")
+	private String url;
 
 	@Autowired
 	private CryptoRepository cryptoRepository;
