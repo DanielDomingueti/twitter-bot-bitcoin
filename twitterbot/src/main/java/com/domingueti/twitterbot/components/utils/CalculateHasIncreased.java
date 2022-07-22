@@ -1,8 +1,8 @@
-package com.domingueti.twitterbot.utils.statics;
+package com.domingueti.twitterbot.components.utils;
 
 import org.springframework.stereotype.Component;
 
-import com.domingueti.twitterbot.jsonrequest.messari.Data;
+import com.domingueti.twitterbot.components.messari.Data;
 import com.domingueti.twitterbot.module.data.models.CryptoData;
 
 @Component
