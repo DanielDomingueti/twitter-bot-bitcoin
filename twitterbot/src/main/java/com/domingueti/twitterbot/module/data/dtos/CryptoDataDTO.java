@@ -3,6 +3,7 @@ package com.domingueti.twitterbot.module.data.dtos;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import com.domingueti.twitterbot.components.utils.RoundDouble;
 import com.domingueti.twitterbot.module.data.models.CryptoData;
 
 import lombok.AllArgsConstructor;
@@ -33,10 +34,10 @@ public class CryptoDataDTO implements Serializable {
 		id = cryptoData.getId();
 		name = cryptoData.getName();
 		symbol = cryptoData.getSymbol();
-		priceUsd = cryptoData.getPriceUsd();
+		priceUsd = RoundDouble.executeValueUsd(cryptoData.getPriceUsd());
 		hasIncreased = cryptoData.getHasIncreased();
 		status = cryptoData.getStatus();
-		changePercentage = cryptoData.getChangePercentage();
+		changePercentage = RoundDouble.executePercentage(cryptoData.getChangePercentage());
 	}
 	
 }
