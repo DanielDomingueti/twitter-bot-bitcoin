@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
 
-import com.domingueti.twitterbot.components.messari.Data;
 import com.domingueti.twitterbot.module.data.models.CryptoData;
+import com.domingueti.twitterbot.module.messari.models.Data;
 
 @Component
 public class CalculateHasIncreased {
@@ -33,7 +33,7 @@ public class CalculateHasIncreased {
 		}
 		
 		return new CryptoData(null, data.getName(), data.getSymbol(), BigDecimal.valueOf(Double.parseDouble(data.getMarket_data().getPrice_usd()))
-				, hasIncreased, status, twentyFourHours, null, null, null, null);
+				, hasIncreased, status, twentyFourHours, null, null, null);
 		
 	}
 	

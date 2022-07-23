@@ -5,7 +5,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
-import com.domingueti.twitterbot.module.crypto.dtos.response.CryptoDTO;
+import com.domingueti.twitterbot.module.data.dtos.CryptoDataDTO;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -13,7 +13,7 @@ import twitter4j.TwitterFactory;
 
 public class PostTweet {
 
-	public static void execute(CryptoDTO dto) {
+	public static void execute(CryptoDataDTO dto) {
 	    
 	    try {
 	    	
@@ -38,7 +38,7 @@ public class PostTweet {
 		    		dto.getName() +
 		    		"\n\uD83D\uDCB5 Price $" + dto.getPriceUsd() +
 		    		"\n" + changeIcon + dto.getStatus() + ": " +
-		    		dto.getChangeValue() + "% in the last 24h" +
+		    		dto.getChangePercentage() + "% in the last 24h" +
 		    		"\n" + finalStr +
 		    		"\n\n#" + dto.getSymbol() + " #crypto #java #code";
 		    
