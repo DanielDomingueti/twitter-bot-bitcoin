@@ -16,7 +16,7 @@ public class DailyPostCron {
 	@Autowired
 	private InsertTweetService service;
 	
-	@Scheduled(cron = "0 0 16/3 * * *", zone = "UTC")
+	@Scheduled(cron = "0 0 23/3 * * *", zone = "UTC")
 	public void execute() {
 		service.execute();
 		System.out.println("teste" + Instant.now());
