@@ -1,5 +1,7 @@
 package com.domingueti.twitterbot.components.utils;
 
+import java.math.BigDecimal;
+
 import org.springframework.stereotype.Component;
 
 import com.domingueti.twitterbot.components.messari.Data;
@@ -9,32 +11,29 @@ import com.domingueti.twitterbot.module.data.models.CryptoData;
 public class CalculateHasIncreased {
 
 	public static CryptoData execute(Data data) {
-		Double oneHour = 0.0;
-		Double twentyFourHours = 0.0;
+		BigDecimal twentyFourHours = new BigDecimal("0.0");
 		Boolean hasIncreased = false;
-		Double changePercentage = 0.0;
+		String status = "Decreased";
 		
-		String oneHourString = data.getMarket_data().getPercent_change_usd_last_1_hour();
+//		String oneHourString = data.getMarket_data().getPercent_change_usd_last_1_hour();
 		String twentyFourHoursString = data.getMarket_data().getPercent_change_usd_last_24_hours();
 
-		
-		if (oneHourString != null) {
-			oneHour = Double.valueOf(oneHourString);
-		}
-		
 		if (twentyFourHoursString != null) {
-			twentyFourHours = Double.valueOf(twentyFourHoursString);
+			twentyFourHours = BigDecimal.valueOf(Double.valueOf(twentyFourHoursString));
 		}
-		
-		changePercentage = oneHour + twentyFourHours;
 		
 		//check if percentage has increased
-		if (changePercentage > 0) {
+		// == 1 means it's greater than 0
+		if (twentyFourHours.signum() == 1) {
 			hasIncreased = true;
 		}
 		
-		return new CryptoData(null, null, data.getName(), data.getSymbol(), Double.parseDouble(data.getMarket_data().getPrice_usd())
-				, hasIncreased, changePercentage, null, null, null, null);
+		if (hasIncreased == true) {
+			status = "Increased";
+		}
+		
+		return new CryptoData(null, data.getName(), data.getSymbol(), BigDecimal.valueOf(Double.parseDouble(data.getMarket_data().getPrice_usd()))
+				, hasIncreased, status, twentyFourHours, null, null, null, null);
 		
 	}
 	

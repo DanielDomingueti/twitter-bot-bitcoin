@@ -3,11 +3,11 @@ package com.domingueti.twitterbot.module.crypto.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,12 +33,12 @@ public class Crypto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private @Getter Long id;
-
-	private @Getter @Setter Long cryptoDataId;
 	
-	//@OneToOne
+	private @Getter @Setter Long cryptoDataId;
+
 	@ToString.Exclude
-	@OneToOne(mappedBy = "crypto", cascade = CascadeType.ALL)
+	@OneToOne(optional = false)
+	@JoinColumn(name = "cryptoDataId", insertable = false, updatable = false)
 	private @Getter CryptoData cryptoData;
 
 	@CreationTimestamp

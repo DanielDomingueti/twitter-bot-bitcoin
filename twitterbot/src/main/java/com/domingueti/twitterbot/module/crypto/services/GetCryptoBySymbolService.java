@@ -39,6 +39,7 @@ public class GetCryptoBySymbolService {
 		
 		CryptoData cryptoData = new CryptoData();
 		Crypto crypto = new Crypto();
+		CryptoDTO dto = new CryptoDTO();
 		
 		try {
 			

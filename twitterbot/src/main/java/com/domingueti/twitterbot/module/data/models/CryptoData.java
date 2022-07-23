@@ -1,13 +1,14 @@
 package com.domingueti.twitterbot.module.data.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -34,21 +35,19 @@ public class CryptoData implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private @Getter Long id;
 	
-	private @Getter @Setter Long cryptoId;
-	
 	private @Getter @Setter String name;
 	
 	private @Getter @Setter String symbol;
 	
-	private @Getter @Setter Double priceUsd;
+	private @Getter @Setter BigDecimal priceUsd;
 	
 	private @Getter @Setter Boolean hasIncreased;
 	
-	private @Getter @Setter Double changePercentage;
+	private @Getter @Setter String status;
 	
-	@ToString.Exclude
-	@OneToOne(optional = false)
-	@JoinColumn(name = "cryptoId", insertable = false, updatable = false)
+	private @Getter @Setter BigDecimal changePercentage;
+	
+	@OneToOne(mappedBy = "cryptoData", cascade = CascadeType.ALL)
 	private @Getter Crypto crypto;
 	
 	@CreationTimestamp
