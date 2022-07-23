@@ -15,21 +15,23 @@ public class PostTweet {
 	    	TwitterFactory tf = new TwitterFactory();
 		    Twitter twitter = tf.getInstance();	
 		    
-		    StringBuilder response = new StringBuilder();
-			response.append("ID: ");
-			response.append(dto.getId());
-			response.append("\nName: ");
-			response.append(dto.getName());
-			response.append("\nSymbol: ");
-			response.append(dto.getSymbol());
-			response.append("\nPrice $");
-			response.append(dto.getPriceUsd());
-			response.append("\nIncreased: ");
-			response.append(dto.getHasIncreased());
-			response.append("\nPercentage changed: ");
-			response.append(dto.getChangeValue());
+		    String changeIcon = "\uD83D\uDD3B"; //decrease standard code;
+
+		    if (dto.getHasIncreased()) {
+		    	changeIcon = "\u2B06"; //increase code 
+		    }
 		    
-		    twitter.updateStatus(response.toString());
+		    //add time UTC twice a day 
+		    
+		    String response = 
+		    		" $" + dto.getSymbol() + " " +
+		    		dto.getName() +
+		    		"\n\uD83D\uDCB5 Price $" + dto.getPriceUsd() +
+		    		"\n" + changeIcon + dto.getStatus() + ": " +
+		    		dto.getChangeValue() + "% in the last 24h" +
+		    		"\n\n#" + dto.getSymbol() + " #crypto #java #code";
+		    
+		    twitter.updateStatus(response);
 	
 	    } 
 	    catch (TwitterException e) {
