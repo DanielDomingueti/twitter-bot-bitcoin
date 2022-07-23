@@ -1,6 +1,4 @@
-package com.domingueti.twitterbot.components.messari;
-
-import java.io.Serializable;
+package com.domingueti.twitterbot.module.messari.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -16,12 +14,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Data implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class DataResponse {
 
-	private String id;
-	private String name;
-	private String symbol;
-	private MarketData market_data;
+	private Data data;
 	
 }

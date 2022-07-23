@@ -1,10 +1,13 @@
 package com.domingueti.twitterbot.module.tweet.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.domingueti.twitterbot.components.utils.PostTweet;
-import com.domingueti.twitterbot.module.crypto.dtos.response.CryptoDTO;
-import com.domingueti.twitterbot.module.crypto.services.GetCryptoBySymbolService;
+import com.domingueti.twitterbot.module.data.dtos.CryptoDataDTO;
+import com.domingueti.twitterbot.module.data.services.GetCryptoDataBySymbolService;
 
 import lombok.AllArgsConstructor;
 
@@ -12,14 +15,24 @@ import lombok.AllArgsConstructor;
 @Service
 public class InsertTweetService  {
 
-	private GetCryptoBySymbolService getCryptoBySymbolService;
+	private GetCryptoDataBySymbolService getCryptoDataBySymbolService;
 
-	public CryptoDTO execute(String crypto) {
-		CryptoDTO dto = getCryptoBySymbolService.execute(crypto);
-	
-		PostTweet.execute(dto);
+	public List<CryptoDataDTO> execute() {
+		List<CryptoDataDTO> listDTO = new ArrayList<>();
+		List<String> list = new ArrayList<>();
+		list.add("BTC");
+		list.add("ETH");
+		list.add("SOL");
 		
-		return dto;
+		for (String cryptoSymbol : list) {
+			CryptoDataDTO dto = getCryptoDataBySymbolService.execute(cryptoSymbol);
+			
+			PostTweet.execute(dto);
+			
+			listDTO.add(dto);
+		}
+		
+		return listDTO;
 	}
 	
 }

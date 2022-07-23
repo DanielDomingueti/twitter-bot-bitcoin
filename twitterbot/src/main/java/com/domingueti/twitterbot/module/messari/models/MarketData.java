@@ -1,4 +1,4 @@
-package com.domingueti.twitterbot.components.messari;
+package com.domingueti.twitterbot.module.messari.models;
 
 import java.io.Serializable;
 

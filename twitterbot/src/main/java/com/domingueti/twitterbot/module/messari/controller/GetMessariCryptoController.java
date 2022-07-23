@@ -1,4 +1,6 @@
-package com.domingueti.twitterbot.components.messari.controller;
+package com.domingueti.twitterbot.module.messari.controller;
+
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.domingueti.twitterbot.module.crypto.dtos.response.CryptoDTO;
-import com.domingueti.twitterbot.module.crypto.services.GetCryptoBySymbolService;
+import com.domingueti.twitterbot.module.data.dtos.CryptoDataDTO;
+import com.domingueti.twitterbot.module.data.services.GetCryptoDataBySymbolService;
 import com.domingueti.twitterbot.module.tweet.services.InsertTweetService;
 
 import lombok.AllArgsConstructor;
@@ -17,25 +19,25 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping(value = "/messari")
 public class GetMessariCryptoController {
-	
-	private GetCryptoBySymbolService getCryptoBySymbolService;
+
+	private GetCryptoDataBySymbolService getCryptoDataBySymbolService;
 	
 	private InsertTweetService insertTweetService;
 	
 	@GetMapping(value = "get/{crypto}")
-	public ResponseEntity<CryptoDTO> getMessariCrypto(@PathVariable("crypto") String crypto) {
+	public ResponseEntity<CryptoDataDTO> getMessariCrypto(@PathVariable("crypto") String crypto) {
 		
-		CryptoDTO dto = getCryptoBySymbolService.execute(crypto);
+		CryptoDataDTO dto = getCryptoDataBySymbolService.execute(crypto);
 		
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@PostMapping(value = "post/{crypto}")
-	public ResponseEntity<CryptoDTO> postTweet(@PathVariable("crypto") String crypto) {
+	@PostMapping(value = "post")
+	public ResponseEntity<List<CryptoDataDTO>> postTweet() {
 		
-		CryptoDTO dto = insertTweetService.execute(crypto);
+		List<CryptoDataDTO> listDTO = insertTweetService.execute();
 		
-		return ResponseEntity.ok().body(dto);
+		return ResponseEntity.ok().body(listDTO);
 	}
 	
 }
