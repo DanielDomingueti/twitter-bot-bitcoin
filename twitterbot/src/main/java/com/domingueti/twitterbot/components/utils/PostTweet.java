@@ -26,7 +26,7 @@ public class PostTweet {
 			String hour = instantStr.substring(11, 19);
 			String month = new DateFormatSymbols(Locale.US).getMonths()[Integer.valueOf(date.substring(5, 7))-1];
 			String day = date.substring(8, 10);
-			String finalStr = "\uD83D\uDD50[" + month + " " + day + "] " + hour;
+			String finalStr = "\uD83D\uDD50[" + month + " " + day + "] " + hour + " UTC";
 		    
 		    String changeIcon = "\uD83D\uDD3B"; //decrease standard code;
 		    if (dto.getHasIncreased()) {

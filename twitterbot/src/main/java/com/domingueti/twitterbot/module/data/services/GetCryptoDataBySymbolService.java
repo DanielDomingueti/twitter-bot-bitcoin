@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 import com.domingueti.twitterbot.components.utils.CalculateHasIncreased;
 import com.domingueti.twitterbot.module.data.dtos.CryptoDataDTO;
 import com.domingueti.twitterbot.module.data.models.CryptoData;
-import com.domingueti.twitterbot.module.data.repositories.CryptoDataRepository;
 import com.domingueti.twitterbot.module.messari.models.DataResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,9 +25,6 @@ public class GetCryptoDataBySymbolService {
 	@Value("${messariUrl}")
 	private String url;
 
-	@Autowired
-	private CryptoDataRepository cryptoDataRepository;
-	
 	@Transactional(readOnly = true)
 	public CryptoDataDTO execute(String cryptoParameter) {
 		
@@ -41,9 +37,6 @@ public class GetCryptoDataBySymbolService {
 			DataResponse data = mapper.readValue(response, DataResponse.class);
 			
 			cryptoData = CalculateHasIncreased.execute(data.getData());
-			if (cryptoData != null) {
-				cryptoDataRepository.save(cryptoData);
-			}
 			
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
