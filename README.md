@@ -33,11 +33,13 @@ New versions might have different options.
 ```
 
 4. Create the file twitter4j.properties (src/main/resources) and insert the keys as following
-   - oauth.consumerKey=API KEY from Twitter
-   - oauth.consumerSecret=API KEY SECRET
-   - oauth.accessToken=ACCESS TOKEN
-   - oauth.accessTokenSecret=ACCESS TOKEN SECRET
-   
+```bash
+  oauth.consumerKey=API KEY from Twitter
+  oauth.consumerSecret=API KEY SECRET
+  oauth.accessToken=ACCESS TOKEN
+  oauth.accessTokenSecret=ACCESS TOKEN SECRET
+```
+
 5. Run the Spring application and the cron will be execute at a given moment.
 
 6. You can also make a request in this URL if you're willing to create a tweet instantly.
