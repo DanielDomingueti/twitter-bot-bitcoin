@@ -38,7 +38,11 @@ New versions might have different options.
 
 6. You can also make a request in this URL if you're willing to create a tweet instantly.
 ```bash
-  POST http://localhost:8080/tweet/post/now
+  POST http://localhost:8080/messari/post/
+```
+7. But if you just want to fetch data, here you go
+```bash
+  GET http://localhost:8080/messari/get/{cryptoSymbol e.g. BTC}
 ```
 
 ## Technologies used
@@ -50,18 +54,19 @@ This project was built with these technologies:
 - Maven
 - Twitter4J library
 - Messari API
+- AWS EC2 for deployment
 
 
 ## How does it work?
 
 Brief explanation about the project's functionalities
 
-1. Its core is based on a CRON method. Everyday at a given hour 
-the system make a request at ```MESSARI URL``` and grab Bitcoin's current price.
+1. Its core is based on a CRON method. Everyday at 10 a.m. and 22 p.m. 
+the system make a request at ```/messari/get/{cryptoSymbol}``` and grab BTC, ETH and SOL's current price.
 
-2. The service ```SERVICE NAME``` process it and create another request 
-at ```TWITTER API URL``` to post a tweet.
+2. The service ```InsertTweetService``` process it and call the function execute() 
+in ```PostTweet class``` to post a tweet.
 
-3. You can easily change the cron's time in ```CRON CLASS```
+3. You can easily change the cron's time in ```PostTweet```
 
-4. If needed, you can insert a tweet at the current moment at ```MANUAL TWEET URL```
+4. If needed, you can insert a tweet at the current moment at ```/messari/post```
