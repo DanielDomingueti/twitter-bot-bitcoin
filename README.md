@@ -18,8 +18,8 @@ New versions might have different options.
 1. Clone the following link locally
 
 ```bash
-  git clone https://github.com/DanielDomingueti/btc-twitter-bot.git
-  cd btc-twitter-project
+  git clone https://github.com/DanielDomingueti/twitter-bot-bitcoin.git
+  cd twitter-bot-bitcoin
 ```
 2. Create a Twitter account
 
