@@ -12,7 +12,7 @@ I decided to build a Twitter bot capable of creating new tweets
 ifself everyday with crypto info.
 
 BTC, ETH e SOL were chosen in the first place. 
-New versions might have different options.
+Upcomming versions might have different options.
 ## Installation
 
 1. Clone the following link locally
