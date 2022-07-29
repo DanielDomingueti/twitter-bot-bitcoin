@@ -1,17 +1,15 @@
 
-# Twitter automation
+# Cryptocurrency bot on Twitter
 
-Automated daily crypto updates on Twitter. 
+![Screenshot from 2022-07-28 21-43-27](https://user-images.githubusercontent.com/75149800/181659841-b0ef8e86-d634-43c5-bc08-1cf355da4da0.png)
 
 ## Inspiration for this project
-
-I was always interested in building software that could work by itself. Automation.
 
 As I'm always looking for different investments and higher capital returns, 
 I decided to build a Twitter bot capable of creating new tweets
 ifself everyday with crypto info.
 
-Bitcoin was chosen in the first place. 
+BTC, ETH e SOL were chosen in the first place. 
 New versions might have different options.
 ## Installation
 
