@@ -4,6 +4,7 @@
 ![Screenshot from 2022-07-28 21-43-27](https://user-images.githubusercontent.com/75149800/181659841-b0ef8e86-d634-43c5-bc08-1cf355da4da0.png)
 
 Twitter profile: https://twitter.com/CryptoBotDomin
+** Account out of service due to hosting issues **
 
 ## Inspiration for this project
 
